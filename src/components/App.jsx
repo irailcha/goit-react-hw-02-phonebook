@@ -7,7 +7,7 @@ import GlobalStyle from './GlobalStyle';
 import './App.styled';
 import {SectionStyle, TitleStyle, TitleContactsStyle, ContactListStyle} from './App.styled'
 
-import { nanoid } from 'nanoid';
+
 
 class App extends React.Component {
   state = {
@@ -31,7 +31,7 @@ class App extends React.Component {
     const newContactData = {
     name: name,
     number: number,
-    id: nanoid()
+   
   };
 
   this.setState(prevState => ({
@@ -50,7 +50,7 @@ class App extends React.Component {
 
 
   changeContact=newContact=>{
-console.log(newContact);
+
 this.setState(prevState => ({
   filter: newContact
 }))
@@ -71,7 +71,7 @@ this.setState(prevState => ({
       <SectionStyle>
         <TitleStyle>Phonebook</TitleStyle>
         <ContactForm addContact={this.addContact} 
-        initialValues={{name:'', number:'', id: nanoid()}}/>
+        />
         <TitleContactsStyle>Contacts</TitleContactsStyle>
 
         <ContactListStyle>

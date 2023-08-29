@@ -3,23 +3,25 @@ import PropTypes from 'prop-types';
 import { StyledForm, StyledField, SubmitButton } from './ContactForm.styled';
 import { Formik } from 'formik';
 import * as yup from 'yup';
+import { nanoid } from 'nanoid';
 
-// Схема валідації
+
 const userSchema = yup.object().shape({
   name: yup.string().required().label("Ім'я"),
   number: yup.string().required().label('Номер'),
 });
 
-const ContactForm = ({ addContact, initialValues }) => {
+
+const ContactForm = ({ addContact }) => {
   const onSubmit = (values, { resetForm }) => {
-    addContact({ ...values });
+    const newContact = { ...values, id: nanoid() };
+    addContact(newContact);
     resetForm();
   };
-
  
 
 return (
-  <Formik initialValues={initialValues} validationSchema={userSchema} onSubmit={onSubmit}>
+  <Formik initialValues={{name:'', number:''}} validationSchema={userSchema} onSubmit={onSubmit}>
     {({ handleSubmit, handleChange, values, errors }) => (
     <StyledForm autoComplete='off' onSubmit={handleSubmit}>
     <label htmlFor='name'> 
@@ -50,11 +52,7 @@ return (
 };
 
 ContactForm.propTypes = {
-  addContact: PropTypes.func.isRequired,
-  initialValues: PropTypes.shape({
-    name: PropTypes.string,
-    number: PropTypes.string
-  }).isRequired
+  addContact: PropTypes.func.isRequired
 };
 
 export default ContactForm;
