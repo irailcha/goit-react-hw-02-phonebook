@@ -38,7 +38,7 @@ export const SubmitButton = styled.button`
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 
   &:hover {
-    background-color: #de1e09;
+    background-color: #939495;
     border: 2px solid #ccc;
   }
 `;
