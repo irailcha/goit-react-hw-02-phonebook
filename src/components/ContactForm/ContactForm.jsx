@@ -42,7 +42,7 @@ return (
     required
   />
     </label>
-    <SubmitButton type='submit'>Add contact</SubmitButton>
+    <SubmitButton type='submit' >Add contact</SubmitButton>
     </StyledForm>
       )}
     </Formik>
